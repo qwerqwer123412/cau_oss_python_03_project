@@ -16,7 +16,8 @@ def start_process(path):
             # version2: menu의 1번을 구현
             # 1번 옵션을 선택하였을 경우 parking_spot_manager 모듈의 print_spots 함수를 호출한다.
             parking_spot_manager.print_spots(spots)
-
+        # version3: menu의 2번을 구현
+        #2번 옵션 수행 시, 각 version3 기능을 수행한다.
         elif select == 2:
             print("---filter by---")
             print("[1] name")
@@ -27,29 +28,31 @@ def start_process(path):
             select = int(input('type:'))
             if select == 1:
                 keyword = input('type name:')
-                print("not implemented yet")
+                spots = parking_spot_manager.filter_by_name(spots, keyword)
                 # fill this block
             elif select == 2:
                 keyword = input('type city:')
-                print("not implemented yet")
-                # fill this block
+                spots = parking_spot_manager.filter_by_city(spots, keyword)
+
             elif select == 3:
                 keyword = input('type district:')
-                print("not implemented yet")
-                # fill this block
+                spots = parking_spot_manager.filter_by_district(spots, keyword)
+
             elif select == 4:
                 keyword = input('type ptype:')
-                print("not implemented yet")
-                # fill this block
+                spots = parking_spot_manager.filter_by_ptype(spots, keyword)
+
             elif select == 5:
                 min_lat = float(input('type min lat:'))
                 max_lat = float(input('type max lat:'))
                 min_lon = float(input('type min long:'))
                 max_lon = float(input('type max long:'))
-                print("not implemented yet")
+                keyword = (min_lat, max_lat, min_lon, max_lon)
+                spots = parking_spot_manager.filter_by_location(spots, keyword)
                 # fill this block
             else:
                 print("invalid input")
+                # fill this block
         elif select == 3:
             keywords = ['name', 'city', 'district', 'ptype', 'latitude', 'longitude']
             print("---sort by---")

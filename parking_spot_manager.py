@@ -55,6 +55,31 @@ def print_spots(spots):
     print(f"---print elements({len(spots)})---")
     for i in spots:
         print(i)
+
+
+#----------------version3----------------
+#spots를 입력 받고, 각각에 맞는 parameter를 포함하는 parking spot object 리스트를 return하는 함수
+def filter_by_name(spots, name):
+    data = [s for s in spots if name in s.get('name')]
+    return data
+
+def filter_by_city(spots, city):
+    data = [s for s in spots if city in s.get('city')]
+    return data
+
+def filter_by_district(spots, district):
+    data = [s for s in spots if district in s.get('district')]
+    return data
+def filter_by_ptype(spots, ptype):
+    data = [s for s in spots if ptype in s.get('ptype')]
+    return data
+#float를 처리하기 위해서 map을 사용
+#처음에 들어오는 값은 string이기 때문에, float로 변환해줘야한다
+def filter_by_location(spots, locations):
+    min_lat, max_lat, min_long, max_long = map(float, locations)
+    data = [s for s in spots if (min_lat < s.get('latitude') < max_lat)
+            and (min_long < s.get('longitude') < max_long)]
+    return data
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
 if __name__ == '__main__':
     print("Testing the module...")
