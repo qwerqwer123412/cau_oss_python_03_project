@@ -53,14 +53,17 @@ def start_process(path):
             else:
                 print("invalid input")
                 # fill this block
+        #version4
+        #parkin_spot_manger에 있는 sort_by_keyword로 spots변수를 update해준다
+        #keywords에 있는 값에 있으면 적절하게 sort 아니면 Invalid라고 뜬다.
         elif select == 3:
             keywords = ['name', 'city', 'district', 'ptype', 'latitude', 'longitude']
             print("---sort by---")
             print(keywords)
             keyword = input('type keyword:')
             if keyword in keywords:
-                print("not implemented yet")
-                # fill this block
+                spots = parking_spot_manager.sort_by_keyword(spots, keyword)
+
             else: print("invalid input")
         elif select == 4:
             # version2: 4번을 선택

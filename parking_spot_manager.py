@@ -80,7 +80,17 @@ def filter_by_location(spots, locations):
     data = [s for s in spots if (min_lat < s.get('latitude') < max_lat)
             and (min_long < s.get('longitude') < max_long)]
     return data
+
+#------------------version4----------------
+#lambda 함수로 정렬하는데, 정렬 기준은 keyword로 입력된 key값을 기준으로 한다.
+def sort_by_keyword(spots, keyword):
+    result = sorted(spots, key=lambda x: x.get(keyword))
+    return result
+
 # 각 단계별로 테스트 (테스트할때 주석해제 후 사용)
+
+
+
 if __name__ == '__main__':
     print("Testing the module...")
     # version#2
@@ -90,9 +100,9 @@ if __name__ == '__main__':
     print_spots(spots)
 
     # version#3
-    # spots = filter_by_district(spots, '동작')
-    # print_spots(spots)
-
+    spots = filter_by_district(spots, '동작')
+    print_spots(spots)
+    print("--------------------")
     # version#4
-    # spots = sort_by_keyword(spots, 'name')
-    # print_spots(spots)
+    spots = sort_by_keyword(spots, 'name')
+    print_spots(spots)
